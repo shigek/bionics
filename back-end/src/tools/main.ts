@@ -1,5 +1,5 @@
 import yargs from 'yargs'
-import { MainController } from '../src/controller/main-coltroller';
+import { MainController } from '../controller/main-coltroller';
 
 const checkInputPath = (args: any) => {
   if (args["input-path"]) {

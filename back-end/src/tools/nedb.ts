@@ -1,5 +1,5 @@
 import yargs from 'yargs'
-import { importTable, findTable, exportTable } from '../src/utils/nedb-utils'
+import { importTable, findTable, exportTable } from '../utils/nedb-utils'
 
 type Command = {
   [key: string]: any
