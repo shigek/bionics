@@ -2,7 +2,8 @@
   "type": "module",
   "scripts": {
     "start": "nodemon src/index.ts",
-    "did": "tsx src/did/did-key.ts"
+    "did": "tsx src/did/did-key.ts",
+    "did-p2": "tsx src/did/did-key-p2.ts"
   },
   "dependencies": {
     "@seald-io/nedb": "^4.0.4",
