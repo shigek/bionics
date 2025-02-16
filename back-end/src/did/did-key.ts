@@ -5,6 +5,8 @@ import elliptic from 'elliptic'
 import { KEYUTIL } from 'jsrsasign';
 import encode from 'base64url';
 
+import * as file from "../utils/file";
+
 const ecurve = new elliptic.ec('p256')
 const key = ecurve.genKeyPair();
 const pubPoint = key.getPublic('hex');
@@ -15,13 +17,15 @@ const compressedKey = compressedKeyInHexfromRaw(rawKey);
 
 const publicKey2 = fromString(compressedKey, 'base16');
 console.log(encodeDIDfromHexString(multicodecName, compressedKey));
-console.log(encodeDIDfromBytes(multicodecName, publicKey2));
+const did = encodeDIDfromBytes(multicodecName, publicKey2);
+file.writeJSON("./.certs/key/did-key.json", [{did}]);
 
 
 const privateKeyHex = key.getPrivate('hex');
 const privateKey = KEYUTIL.getKey({ d: privateKeyHex, curve: 'P-256' });
 const privateKeyPEM = KEYUTIL.getPEM(privateKey, 'PKCS8PRV');
 console.log('Private Key PEM:\n', privateKeyPEM);
+file.writeString("./.certs/key/did-key.private.pem", privateKeyPEM);
 
 const publicKey = key.getPublic();
 const jwk = {
@@ -30,4 +34,5 @@ const jwk = {
     x: encode(publicKey.getX().toArrayLike(Buffer, 'be', 32)),
     y: encode(publicKey.getY().toArrayLike(Buffer, 'be', 32)),
 };
+file.writeJSON("./.certs/key/did-key-jwk.json", [jwk]);
 console.log(jwk);

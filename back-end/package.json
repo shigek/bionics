@@ -3,7 +3,8 @@
   "scripts": {
     "start": "nodemon src/index.ts",
     "did": "tsx src/did/did-key.ts",
-    "did-p2": "tsx src/did/did-key-p2.ts"
+    "did-p2": "tsx src/did/did-key-p2.ts",
+    "jwt": "tsx src/did/jwt.ts"
   },
   "dependencies": {
     "@seald-io/nedb": "^4.0.4",
@@ -13,6 +14,7 @@
     "did-key-creator": "^0.3.2",
     "elliptic": "^6.6.1",
     "express": "^4.21.0",
+    "jose": "^5.9.6",
     "jsrsasign": "^11.1.0",
     "uint8arrays": "^5.1.0",
     "yargs": "^17.7.2"
